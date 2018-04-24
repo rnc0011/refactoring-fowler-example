@@ -53,13 +53,31 @@ public class Customer {
 				+ " frequent renter points";
 		return result;
 	}
-
-	/**
-	 * @deprecated Use {@link #MISSING()} instead
-	 */
-	private int getPoints(int frequentRenterPoints, Rental each) {
-		return getPoints(each);
+	
+	public String statmentHMTL() {
+		double totalAmount = 0;
+		int frequentRenterPoints = 0;
+		Iterator<Rental> rentals = _rentals.iterator();
+		String result = "<h1>Rental Record for " + getName() + "</h1>";
+		while (rentals.hasNext()) {
+			double thisAmount = 0;
+			Rental each = rentals.next();
+			// determine amounts for each line
+			thisAmount = each.getAmountFor();
+			// add frequent renter points
+			frequentRenterPoints += each.getFrequentRenterPoints();
+			// show figures for this rental
+			result += "<h2>" + each.getMovie().getTitle() + "\t"
+					+ String.valueOf(thisAmount) + "</h2>";
+			totalAmount += thisAmount;
+		}
+		// add footer lines
+		result += "<p>Amount owed is " + String.valueOf(totalAmount) + "</p>";
+		result += "<p>You earned " + String.valueOf(frequentRenterPoints)
+				+ " frequent renter points</p>";
+		return result;
 	}
+
 
 	/**
 	 * @deprecated Use {@link ubu.gii.dass.refactoring.Rental#getFrequentRenterPoints()} instead
