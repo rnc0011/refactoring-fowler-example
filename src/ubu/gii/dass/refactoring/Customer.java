@@ -41,11 +41,7 @@ public class Customer {
 			// determine amounts for each line
 			thisAmount = each.getAmountFor();
 			// add frequent renter points
-			frequentRenterPoints++;
-			// add bonus for a two day new release rental
-			if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-					&& each.getDaysRented() > 1)
-				frequentRenterPoints++;
+			frequentRenterPoints += each.getFrequentRenterPoints();
 			// show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t"
 					+ String.valueOf(thisAmount) + "\n";
@@ -56,6 +52,20 @@ public class Customer {
 		result += "You earned " + String.valueOf(frequentRenterPoints)
 				+ " frequent renter points";
 		return result;
+	}
+
+	/**
+	 * @deprecated Use {@link #MISSING()} instead
+	 */
+	private int getPoints(int frequentRenterPoints, Rental each) {
+		return getPoints(each);
+	}
+
+	/**
+	 * @deprecated Use {@link ubu.gii.dass.refactoring.Rental#getFrequentRenterPoints()} instead
+	 */
+	private int getPoints(Rental each) {
+		return each.getFrequentRenterPoints();
 	}
 
 	/**
