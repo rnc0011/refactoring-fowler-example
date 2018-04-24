@@ -78,18 +78,4 @@ public class Customer {
 		return result;
 	}
 
-
-	/**
-	 * @deprecated Use {@link ubu.gii.dass.refactoring.Rental#getFrequentRenterPoints()} instead
-	 */
-	private int getPoints(Rental each) {
-		return each.getFrequentRenterPoints();
-	}
-
-	/**
-	 * @deprecated Use {@link ubu.gii.dass.refactoring.Rental#getAmountFor()} instead
-	 */
-	private double getAmount(Rental aRental) {
-		return aRental.getAmountFor();
-	}
 }
