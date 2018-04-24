@@ -39,8 +39,7 @@ public class Customer {
 			double thisAmount = 0;
 			Rental each = rentals.next();
 			// determine amounts for each line
-			thisAmount = getAmount(thisAmount, each);
-			
+			thisAmount = getAmount(each);
 			// add frequent renter points
 			frequentRenterPoints++;
 			// add bonus for a two day new release rental
@@ -59,7 +58,8 @@ public class Customer {
 		return result;
 	}
 
-	private double getAmount(double thisAmount, Rental each) {
+	private double getAmount(Rental each) {
+		double thisAmount = 0;
 		switch (each.getMovie().getPriceCode()) {
 		case Movie.REGULAR:
 			thisAmount += 2;
