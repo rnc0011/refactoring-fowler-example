@@ -4,10 +4,10 @@ import junit.framework.*;
 /**
  * Tema Refactorizaciones
  * 
- * Ejemplo de aplicación de refactorizaciones. Actualizado para colecciones
- * genéricas de java 1.5
+ * Ejemplo de aplicaciï¿½n de refactorizaciones. Actualizado para colecciones
+ * genï¿½ricas de java 1.5
  * 
- * @author M. Fowler y <A HREF="mailto:clopezno@ubu.es">Carlos López</A>
+ * @author M. Fowler y <A HREF="mailto:clopezno@ubu.es">Carlos Lï¿½pez</A>
  * @version 1.1
 
  * 
@@ -42,13 +42,19 @@ public class VideoClubTest extends TestCase {
 		c1.addRental(r3);
 
 		String salida = c1.statement();
+		String salidaHTML = c1.statmentHMTL();
 
 		String salidaEsperada = new String("Rental Record for Manuel\n"
 				+ "\tSky Captain\t15.0\n" + "\tAccion Mutante\t2.0\n"
 				+ "\tHermano Oso\t12.0\n" + "Amount owed is 29.0\n"
 				+ "You earned 4 frequent renter points");
+		String salidaEsperadaHTML = new String("<h1>Rental Record for Manuel</h1>"
+				+ "<h2>Sky Captain 15.0</h2>" + "<h2>Accion Mutante 2.0</h2>"
+				+ "<h2>Hermano Oso 12.0</h2>" + "<p>Amount owed is 29.0</p>"
+				+ "<p>You earned 4 frequent renter points</p>");
 
 		assertTrue("Calcula mal el alquiler", salidaEsperada.equals(salida));
+		assertTrue("Calcula mal el alquiler", salidaEsperadaHTML.equals(salidaHTML));
 
 	}
 
