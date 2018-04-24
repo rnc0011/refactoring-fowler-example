@@ -67,7 +67,7 @@ public class Customer {
 			// add frequent renter points
 			frequentRenterPoints += each.getFrequentRenterPoints();
 			// show figures for this rental
-			result += "<h2>" + each.getMovie().getTitle() + "\t"
+			result += "<h2>" + each.getMovie().getTitle() + " "
 					+ String.valueOf(thisAmount) + "</h2>";
 			totalAmount += thisAmount;
 		}
